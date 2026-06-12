@@ -34,8 +34,6 @@ channel = connection.channel()
 QUEUE_NAME = "basic_spider"
 channel.queue_declare(queue=QUEUE_NAME, durable=True)
 
-
-# ========== NEW: batch upsert function (replaces per-product insert_if_not_exists) ==========
 def upsert_products_batch(session, products_data):
     """Insert or update multiple products in one database round trip.
 
@@ -64,8 +62,6 @@ def upsert_products_batch(session, products_data):
     session.commit()
     return result.rowcount
 
-
-# ===========================================================================================
 
 # callback function to use with basic_consume
 def callback(ch, method, properties, body):
