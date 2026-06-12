@@ -1,0 +1,23 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies (none needed for Scrapy)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy Scrapy project and support files
+COPY basic/ ./basic/
+COPY extract.py .
+COPY models.py .
+
+# Create directory for HTML output
+RUN mkdir -p /app/basic_spider_data
+
+WORKDIR /app/basic
+
+# Run Scrapy spider
+CMD ["scrapy", "crawl", "basic"]

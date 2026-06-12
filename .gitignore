@@ -1,0 +1,44 @@
+# --- Scrapy Cache & local files ---
+# Explicitly ignores the local scrapy cache folder inside your project structure
+basic/.scrapy/
+basic/basic/.scrapy/
+
+# --- Python Virtual Environment ---
+.venv/
+env/
+venv/
+ENV/
+
+# --- Python Artifacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Docker Local Data (Optional but recommended) ---
+# Prevents locally mounted volume data or local DB storage from being committed
+.dockerignore
+
+# --- OS / IDE Specific ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
